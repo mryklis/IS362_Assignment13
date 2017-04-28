@@ -15,11 +15,11 @@ countsp = df1['Poisonous?'].value_counts()
 print countsp
 
 #Poisonous/Edible Distribution
-objects = ['Edible', 'Poisonous']
-y_pos = np.arange(len(objects))
+objects1 = ['Edible', 'Poisonous']
+y_pos = np.arange(len(objects1))
 data = countsp
 plt.bar(y_pos, data, align='center', alpha=0.5)
-plt.xticks(y_pos, objects)
+plt.xticks(y_pos, objects1)
 plt.ylabel('Count')
 plt.title('Poisonous/Edible Distribution')
 plt.show()
@@ -33,11 +33,11 @@ countsc = df1['Cap Color'].value_counts()
 print countsc
 
 #Cap Color Distribution
-objects = ['Brown', 'Yellow', 'White', 'Gray', 'Red', 'Pink', 'Buff', 'Purple', 'Cinnamon', 'Green']
-y_pos = np.arange(len(objects))
+objects2 = ['Brown', 'Yellow', 'White', 'Gray', 'Red', 'Pink', 'Buff', 'Purple', 'Cinnamon', 'Green']
+y_pos = np.arange(len(objects2))
 data = countsc
 plt.bar(y_pos, data, align='center', alpha=0.5)
-plt.xticks(y_pos, objects)
+plt.xticks(y_pos, objects2)
 plt.ylabel('Count')
 plt.title('Cap Color Distribution')
 plt.show()
@@ -51,11 +51,18 @@ countso = df1['Odor'].value_counts()
 print countso
 
 #Odor Distribution
-objects = ['None', 'Foul', 'Fishy', 'Spicy', 'Anise', 'Almond', 'Pungent', 'Creosote', 'Musty']
-y_pos = np.arange(len(objects))
+objects3 = ['None', 'Foul', 'Fishy', 'Spicy', 'Anise', 'Almond', 'Pungent', 'Creosote', 'Musty']
+y_pos = np.arange(len(objects3))
 data = countso
 plt.bar(y_pos, data, align='center', alpha=0.5)
-plt.xticks(y_pos, objects)
+plt.xticks(y_pos, objects3)
 plt.ylabel('Count')
 plt.title('Odor Distribution')
 plt.show()
+
+# Scatter Plot
+sns.set(style="ticks", context="talk")
+pal = sns.cubehelix_palette(4, 1.5, .75, light=.6, dark=.2)
+g = sns.lmplot(x='Odor', y='Cap Color', hue='Poisonous?', data=df1, palette=pal, size=7)
+g.set_axis_labels("Odor", "Cap Color")
+sns.plt.show()
